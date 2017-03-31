@@ -1,12 +1,10 @@
 language: ruby
 rvm:
- - 2.2.0
-
-env:
-global:
-  - ADMIN_EMAIL=<%= ENV["ADMIN_EMAIL"] %>
-
+- 2.2.0
 script:
-  - "bundle exec rake db:setup"
-  - "bundle exec rake db:setup RAILS_ENV=test"
-  - "bundle exec rspec"
+- bundle exec rake db:setup
+- bundle exec rake db:setup RAILS_ENV=test
+- bundle exec rspec
+env:
+  matrix:
+    secure: jYUJsukzq2kkkL7gpdtBbkoHxJkeIhAsjCNhYilrZB9pVeMgnRHk2lCKTvk0RoKHGFAp/JL/H6eZJghez8rWa37fXM87bWxZ5LAkaHnsIihnWjhe4P5kCgQ+cDMJLNRx/+e1Jian19Ax40utYbHbcziWt0pLWfvRHQ8WlkEXXsOrEf9o5rCMa0i0p6FH9PU0WvHwZPFAY4VVPRRWadBrpjvN/Silb60ANog7GJHyF0Cv+e1+0gmbZ76Pk7/KmVPiMtJfrgLypgUxiqXELBWE+ZrtlsbpuQJKVzS/IwFIfLIvJ1OZlGclDeqgUJRZ6k6DOCuR07NEJfdRaxCzZwLByu4WkBZs/w9EXo1TFwVZXFE1xE7p6WVZ1hnPbhPX6JdruQOHb2q/TmnIMzS3ykgj2ELr7dwRf1i2rQ+B/Spy9uD7L1o33HNpqxuCkNtf+2KkqS0KTmIOhj2iYU5jTWNzfjGFHE5TuNCzxab6IhZBwa39b3GAnlgqlHCf5wsjRR2D+koM9/feRo//nHufOI4+IiFZGgtJNY7y5n0aNm1jCcn6Y/tCx//GZOJn5WsEhdGoPcEAraBr4E205wAA1RS2zcf8lavLFFwGMvZApfDyrixxPkVTpzqTw6UWpG3Hcl0swccpQCjyYsPEn2YcOwa9bSG2U7XemduXKIbTpNr04cI=
