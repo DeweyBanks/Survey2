@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :surveys, dependent: :destroy
+  belongs_to :role
 
   validates :email, presence: true
   validates :email, uniqueness: true
@@ -9,6 +11,8 @@ class User < ActiveRecord::Base
       :message => "has already been taken"
     }
   validates_format_of :username, with: /^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/, :multiline => true
+
+  after_create :set_role
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -38,5 +42,17 @@ class User < ActiveRecord::Base
     self.role_id == role.id
   end
 
+  private
+
+  def set_role
+    if self.email == ENV['ADMIN_EMAIL']
+      role = Role.find_or_create_by(name: "Admin")
+      self.role_id = role.id
+    else
+      role = Role.find_or_create_by(name: "User")
+      self.role_id = role.id
+    end
+    self.save
+  end
 
 end

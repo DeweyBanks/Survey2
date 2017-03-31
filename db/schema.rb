@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331205234) do
+ActiveRecord::Schema.define(version: 20170331211141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,20 @@ ActiveRecord::Schema.define(version: 20170331205234) do
   create_table "answers", force: :cascade do |t|
     t.string   "body"
     t.integer  "survey_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "votes",      default: 0, null: false
   end
 
   add_index "answers", ["survey_id"], name: "index_answers_on_survey_id", using: :btree
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "roles", ["name"], name: "index_roles_on_name", unique: true, using: :btree
 
   create_table "surveys", force: :cascade do |t|
     t.string   "title"
@@ -50,11 +59,14 @@ ActiveRecord::Schema.define(version: 20170331205234) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
+    t.integer  "role_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   add_foreign_key "answers", "surveys"
   add_foreign_key "surveys", "users"
+  add_foreign_key "users", "roles"
 end
