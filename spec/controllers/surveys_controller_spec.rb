@@ -16,14 +16,15 @@ RSpec.describe SurveysController, type: :controller do
   end
 
   describe "GET #show" do
-   login_user
     it "assigns the requested survey to @survey" do
-      @survey = FactoryGirl.create(:survey_with_answers, answers_count: 5)
+      user = FactoryGirl.create(:user)
+      @survey = FactoryGirl.create(:survey_with_answers, :user_id => user.id, answers_count: 5)
       get :show, id: @survey
       expect(assigns(:survey)).to eq(@survey)
     end
     it "renders the :results template" do
-      @survey = FactoryGirl.create(:survey_with_answers)
+      user = FactoryGirl.create(:user)
+      @survey = FactoryGirl.create(:survey_with_answers, :user_id => user.id)
       get :results, id: @survey
       expect(response).to render_template(:results)
     end
@@ -53,7 +54,8 @@ RSpec.describe SurveysController, type: :controller do
       end
 
       it "redirects to the new survey" do
-        survey = FactoryGirl.attributes_for(:survey)
+        user = FactoryGirl.create(:user)
+        survey = FactoryGirl.attributes_for(:survey_with_answers, :user_id => user.id)
         post :create, survey: survey
         expect(response).to redirect_to(survey_path(assigns[:survey]))
       end
@@ -75,7 +77,8 @@ RSpec.describe SurveysController, type: :controller do
 
   describe "POST #tab_results " do
     it "increases votes total" do
-      survey = FactoryGirl.create(:survey_with_answers)
+      user = FactoryGirl.create(:user)
+      survey = FactoryGirl.create(:survey_with_answers, :user_id => user.id)
       answer = survey.answers.first
       votes = answer.votes
       post :tab_results, :answer_id => answer.id, :id => survey.id

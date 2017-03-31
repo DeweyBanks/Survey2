@@ -4,13 +4,8 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true
   validates :email, uniqueness: true
-  validates :username,
-    :presence => true,
-    :uniqueness => {
-      :case_sensitive => false,
-      :message => "has already been taken"
-    }
-  validates_format_of :username, with: /^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/, :multiline => true
+  validates :username, :presence => true
+
 
   after_create :set_role
 
