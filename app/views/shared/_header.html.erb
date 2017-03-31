@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">SurveyMaker</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to '<span class="sr-only">(current)</span> Home'.html_safe, root_path, :class => "active" %></li>
+        <li><%= link_to "Surveys", surveys_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Create a survey", new_survey_path %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: 'delete', data: { confirm: 'Are you sure?' } %></li>
+        <% else %>
+          <li><%= link_to '<i class="fa fa-sign-in" aria-hidden="true"></i> login'.html_safe, user_session_path %></li>
+        <% end %>
+        <% if user_signed_in? && current_user.role.name == "Admin" %>
+          <li><%= link_to "Admin", "/admin" %></li>
+        <% end %>
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to 'My Account', account_path(current_user) %></li>
+          <li><p class="navbar-text"><%= current_user.username %></p></li>
+          <li><%= image_tag gravatar_url("#{current_user.email}", 54), alt: "#{current_user.username}" %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
