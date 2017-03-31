@@ -13,7 +13,12 @@ RSpec.describe User, type: :model do
     it { should have_many(:surveys).dependent(:destroy) }
   end
   context "admin scope" do
-    user = FactoryGirl.create(:user, email: ENV["ADMIN_EMAIL"])
+    role = Role.find_by(name: "Admin") || FactoryGirl.create(:role, :admin)
+    user = FactoryGirl.create(:user, :role_id => role.id)
+    if user.role_id != role.id
+      user.role_id = role.id
+      user.save
+    end
     it "has the role of admin" do
       expect(user.is_admin?).to be(true)
     end
