@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context "validations" do
-    before { FactoryGirl.build(:user, :email => "test12@gmail.com") }
+    before { FactoryGirl.build(:user) }
     it { is_expected.to validate_presence_of(:username) }
     it { is_expected.to validate_presence_of(:email) }
-    it { should validate_uniqueness_of(:email).case_insensitive }
     it { should validate_presence_of(:password) }
   end
   context "associations" do
