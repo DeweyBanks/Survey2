@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/DeweyBanks/Survey2.svg?branch=master)](https://travis-ci.org/DeweyBanks/Survey2)
+[![Code Climate](https://codeclimate.com/github/DeweyBanks/Survey2/badges/gpa.svg)](https://codeclimate.com/github/DeweyBanks/Survey2)
 
 # SurveyMaker
 
