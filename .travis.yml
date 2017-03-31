@@ -2,6 +2,10 @@ language: ruby
 rvm:
  - 2.2.0
 
+env:
+global:
+  - ADMIN_EMAIL=<%= ENV["ADMIN_EMAIL"] %>
+
 script:
   - "bundle exec rake db:setup"
   - "bundle exec rake db:setup RAILS_ENV=test"
