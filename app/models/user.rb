@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   belongs_to :role
 
   validates :email, presence: true
+  validates :email, uniqueness: true
   validates :username, :presence => true
 
 

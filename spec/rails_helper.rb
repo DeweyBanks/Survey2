@@ -6,7 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
-require 'support/controller_macros'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 
@@ -48,7 +48,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include FactoryGirl::Syntax::Methods
-  config.include ControllerMacros, type: :controller
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -77,7 +77,7 @@ RSpec.configure do |config|
     Rails.application.load_seed # loading seeds
   end
 
-  config.extend ControllerMacros, :type => :controller
+
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
