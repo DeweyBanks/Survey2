@@ -3,10 +3,19 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  config.authenticate_with do
+    if !current_user
+      redirect_to '/'
+    else
+      unless current_user.role_id == Role.find_by(name:'Admin').id
+        flash[:error] = "You must be an admin"
+        redirect_to '/'
+      end
+    end
+  end
+
+  config.label_methods << :email
+  config.current_user_method(&:current_user)
 
   ## == Cancan ==
   # config.authorize_with :cancan
@@ -33,7 +42,6 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-
     ## With an audit adapter, you can add:
     # history_index
     # history_show

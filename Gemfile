@@ -51,7 +51,6 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'awesome_print'
   gem 'coveralls', require: false
 end
 

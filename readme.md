@@ -71,7 +71,6 @@ $ rspec
         gem 'capybara'
         gem 'database_cleaner'
         gem 'shoulda-matchers', '~> 3.1'
-        gem 'awesome_print'
     In Production:
         gem 'rails_12factor'
 

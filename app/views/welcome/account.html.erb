@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="page-header">
+      <h1>My Account</h1>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#surveysModal">
+          My Surveys
+        </button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#settingsModal">
+          Settings
+        </button>
+      </div>
+    <!--   Modal -->
+      <div class="modal fade" id="surveysModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"><%= @user.username %>'s Surveys</h4>
+            </div>
+            <div class="modal-body">
+              <%= render :partial => 'surveys' %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+    </div>
+
+    <div class="media">
+      <div class="media-left">
+        <%= image_tag gravatar_url("#{current_user.email}", 64), alt: "#{current_user.username}" %>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%= @user.username %></h4>
+          <%= @user.email %>
+          <div class="media-body">
+            <h4 class="media-heading"></h4>
+              <%= button_to "Cancel my account", registration_path(resource_name), :type =>"button", :class => "btn btn-danger", data: { confirm: "Are you sure? This will delete all of your surveys!" }, method: :delete %>
+              <!-- Modal -->
+              <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="settingsModalLabel">My Settings</h4>
+                    </div>
+                    <div class="modal-body">
+
+                      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+                      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+                        <div class="form-group">
+                          <%= f.label :username %><br />
+                          <%= f.text_field :username, autofocus: true %>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.label :email %><br />
+                          <%= f.email_field :email, autofocus: true, :required => true %>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                          <%= f.password_field :password, autocomplete: "off" %>
+                          <% if @minimum_password_length %>
+                            <br />
+                            <em><%= @minimum_password_length %> characters minimum</em>
+                          <% end %>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.label :password_confirmation %><br />
+                          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                          <%= f.password_field :current_password, autocomplete: "off", :required => true %>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <%= f.submit "Update", :class => "btn btn-primary" %>
+                    <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+          </div>
+      </div>
+      <div class="media-body">
+        <h5 class="media-heading">Number of Surveys: <span class="badge"><%= @surveys.count %></span></h5>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

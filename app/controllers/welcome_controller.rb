@@ -4,6 +4,9 @@ class WelcomeController < ApplicationController
 
   end
 
-
+  def account
+    @user = User.find(params[:id])
+    @surveys = @user.surveys.paginate(:page => params[:page], :per_page => 10)
+  end
 
 end
