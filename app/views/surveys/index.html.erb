@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="page-header">
+      <h1>The SurveyMaker Surveys</h1>
+    </div>
+    <table id="surveys" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Survey</th>
+          <th>Results</th>
+          <th>Created by:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @surveys.each do |survey| %>
+        <tr>
+          <td><%= link_to survey.title, survey_path(survey) %></td>
+          <td>
+            <% answer_array = [] %>
+            <% survey.answers.each do |answer| %>
+            <% answer_array.push(["#{answer.body}",answer.votes]) %>
+            <% end %>
+            <%= pie_chart(answer_array, legend: {position: 'none'}, width: "50px", height: "50px") %>
+          </td>
+          <td class="survey-user"><%= survey.user.username %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation">
+      <% if @surveys.any? %>
+      <%= will_paginate @surveys, renderer: BootstrapPagination::Rails  %>
+      <% else %>
+      <p class="empty">No surveys yet.</p>
+      <% end %>
+    </nav>
+
+  </div>
+
+</div>
+

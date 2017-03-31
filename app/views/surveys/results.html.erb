@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @survey.title %> <br><small>Created by: <%= @survey.user.username %></small></h3>
+      </div>
+      <div class="panel-body">
+        <h4> Total Votes: <%= @total %> </h4>
+          <% answer_array = [] %>
+        <% @survey.answers.each do |answer| %>
+          <% answer_array.push(["#{answer.body}",answer.votes]) %>
+        <% end %>
+        <%= pie_chart(answer_array) %>
+      </div>
+      <div class="social-share">
+        <a href="#" class="fb-share"><%= image_tag("FB-f-Logo__blue_50.png", :alt=> "facebook logo") %>Share on Facebook</a>
+        <div id="fb-root"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id))
+        return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+window.fbAsyncInit = function() {
+    FB.init({
+        appId: <%= ENV['APP_ID'] %>,
+        status: true,
+        xfbml: true,
+        cookie: true
+    });
+};
+
+$(document).ready(function() {
+    $('.fb-share').click(function() {
+        FB.ui({
+            method: 'feed',
+            name: '<%= @survey.title %>',
+            link: 'https://survey-constructor.herokuapp.com/tab_results?id=<%= @survey.id %>',
+            picture: 'http://www.deweybanks.com/assets/SurveyMaker-ac6803449037a5916edf18838eee9e7895fb310c0157d11e481bf863604fdba5.png',
+            description: 'SurveyMaker is an app for creating and taking surveys.'
+        });
+    });
+});
+
+</script>

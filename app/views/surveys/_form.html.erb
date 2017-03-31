@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="page-header">
+      <h1>Create your survey</h1>
+    </div>
+
+    <%= nested_form_for @survey do |f| %>
+    <% if @survey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+      <ul>
+        <% @survey.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="form-group">
+    <%= f.label :enter_a_question %><br>
+      <%= f.text_field :title, :placeholder=>"question" %>
+    </div>
+    <label>Then add an answer for your question. Add as many answers as you like.</label>
+    <div class="form-group">
+      <%= f.fields_for :answers do |answer_form| %>
+      <%= answer_form.text_field :body, :class=> "answers", :placeholder => "answer" %>
+      <%= answer_form.link_to_remove "Remove this answer" %>
+      <% end %>
+      <p><%= f.link_to_add "+ Add an answer", :answers, :class => "btn btn-primary btn-xs" %></p>
+    </div>
+    <label>When you are finished create your survey.</label>
+    <br>
+    <%= f.submit 'Create Survey', :class => "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
