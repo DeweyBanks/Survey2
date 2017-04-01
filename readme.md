@@ -10,7 +10,7 @@
 
 ## Getting started
 
-SurveyMaker works with Rails 4.2.5. It uses Facebook oath strategy with Devise.
+SurveyMaker works with Rails 4.2.8 It uses Facebook oath strategy with Devise.
 You will need to aquire an APP_ID and APP_SECRET from Facebook.
 To set up your version with Facebook visit:
 [Facebook for Developers](https://developers.facebook.com/)
