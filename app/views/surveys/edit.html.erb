@@ -2,8 +2,10 @@
 
 <%= render 'form' %>
 <br>
-<div class="center">
-<%= link_to 'Show', @survey %> |
-<%= link_to 'Back', surveys_path %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= link_to 'Show', results_path(id: @survey.id) %> |
+    <%= link_to 'Back', account_path(current_user) %>
+  </div>
 </div>
 </section>

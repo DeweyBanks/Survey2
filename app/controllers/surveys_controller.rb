@@ -22,8 +22,8 @@ class SurveysController < ApplicationController
     end
     respond_to do |format|
       if @survey.save
-        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
-        format.json { render :show, status: :created, location: @survey }
+        format.html { redirect_to :action => 'results', :id => @survey.id, notice: 'Survey was successfully created.' }
+        format.json { render :results, status: :created, location: @survey }
       else
         format.html { render :new }
         format.json { render json: @survey.errors, status: :unprocessable_entity }
@@ -42,6 +42,9 @@ class SurveysController < ApplicationController
   end
 
   def destroy
+    @survey.destroy
+      flash[:notice] = "Your survey has been removed"
+      redirect_to account_path(current_user)
   end
 
   def results
@@ -73,7 +76,8 @@ class SurveysController < ApplicationController
     params.require(:survey).permit(
       :title,
       :user_id,
-      answers_attributes: [:id, :body, :_destroy]
+      answers_attributes: [:id, :body, :_destroy],
+      comments_attributes: [:id, :body, :user_id, :_destroy]
       )
   end
 

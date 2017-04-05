@@ -18,7 +18,7 @@
         <li><%= link_to "Surveys", surveys_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to "Create a survey", new_survey_path %></li>
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: 'delete', data: { confirm: 'Are you sure?' } %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: 'delete', data: { confirm: t('Are you sure?'), ok: t('buttons.ok'), cancel: t('buttons.cancel') } %></li>
         <% else %>
           <li><%= link_to '<i class="fa fa-sign-in" aria-hidden="true"></i> login'.html_safe, user_session_path %></li>
         <% end %>

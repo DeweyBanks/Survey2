@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="jumbotron">
-      <h1 class="display-3">Welcome To SurveyMaker</h1>
+        <h1 class="display-3">Welcome To SurveyMaker</h1>
         <% if user_signed_in? %>
           <p class="lead">Hello <%= current_user.username %>, from here you can:</p>
           <p><%= link_to "Create a survey", new_survey_path, :class => "btn btn-lg btn-success" %>

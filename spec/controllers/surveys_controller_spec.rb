@@ -57,7 +57,9 @@ RSpec.describe SurveysController, type: :controller do
         user = FactoryGirl.create(:user)
         survey = FactoryGirl.attributes_for(:survey_with_answers, :user_id => user.id)
         post :create, survey: survey
-        expect(response).to redirect_to(survey_path(assigns[:survey]))
+        created_survey = assigns[:survey]
+        target_url = "http://test.host/tab_results?id=#{created_survey.id}&notice=Survey+was+successfully+created."
+        expect(response).to redirect_to(target_url)
       end
 
     end

@@ -3,13 +3,14 @@
     <tr>
       <th>Survey</th>
       <th>Results</th>
-      <th>Created by:</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
     <% @surveys.each do |survey| %>
     <tr>
-      <td><%= link_to survey.title, survey_path(survey) %></td>
+      <td><%= link_to survey.title, results_path(id: survey.id) %></td>
       <td>
         <% answer_array = [] %>
         <% survey.answers.each do |answer| %>
@@ -17,7 +18,9 @@
         <% end %>
         <%= pie_chart(answer_array, legend: {position: 'none'}, width: "50px", height: "50px") %>
       </td>
-      <td class="survey-user"><%= survey.user.username %></td>
+      <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i><%= link_to "edit", edit_survey_path(survey.id) %>
+      </td>
+      <td class="survey-user"><i class="fa fa-trash" aria-hidden="false"></i><%=link_to "delete",survey_path(survey.id), :method => :delete, data: { confirm: t('Are your sure you want to delete this survey?'), ok: t('buttons.ok'), cancel: t('buttons.cancel') } %> </td>
     </tr>
     <% end %>
   </tbody>

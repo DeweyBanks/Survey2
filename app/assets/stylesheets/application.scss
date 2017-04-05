@@ -18,7 +18,11 @@
 @import "bootstrap";
 
 body {
-  background-color: #93a7c9;
+  background-color: #8DA0B3;
+}
+
+.jumbotron {
+  color: #2C304D;
 }
 
 .navbar-default {
@@ -27,13 +31,27 @@ body {
 }
 
 .navbar-default a {
-  color: #544692 !important;
+  color: #2C304D !important;
 }
 
 #surveys {
   background-color: #C2CEE4;
 }
 
+#delete-survey {
+  color: #AE1414;
+}
+
 .answers {
   margin: 10px auto;
+}
+
+#commentForm {
+  margin-bottom: 300px;
+  margin-left: 300px;
+}
+
+#commentForm textarea {
+  width: 500px;
+  height: 100px;
 }

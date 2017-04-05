@@ -55,7 +55,6 @@ $ rspec
     ruby '2.2.0'
 
 #### System dependencies
-    gem 'rails_admin'
     gem 'devise'
     gem 'omniauth-facebook'
     gem 'dotenv-rails'
@@ -76,8 +75,8 @@ $ rspec
 
 #### User Stories
     Vistor = A user with no user_account
-    User = A user who has signed up with a user_account
-    Admin = A User whos email matches the app's admin email.
+    User = A user who has signed up with a user_account. Has all abilites of Vistor.
+    Admin = A User whos email matches the app's admin email. Has all abilities of User.
 
     As a Vistor I should be able to create a user_account using my Facebook account.
     As a Vistor I should be able to create a user_account using my email.
@@ -87,17 +86,24 @@ $ rspec
     As a Vistor I should be able to post the results of a survey to my Facebook Page.
 
     As a User I should be able to create a survey.
-    As a User I should be able to see all of the surveys created.
-    As a User I should be able to take all of the surveys created.
-    As a User I should be able to see the results of all the surveys created.
-    As a User I should be able to post the results of a survey to my Facebook Page.
+    As a User I should be able to see all of the comments left about a survey.
+    As a User I should be able to post a comment.
+    As a User I should be able to edit my comment.
+    As a User I should be able to delete my comment.
+    As a User I should be able to visit 'My Account' page
+    As a User I should be able to edit my user information.
+    As a User I should be able to see all of my surveys.
+    As a User I should be able to edit my surveys.
+    As a User I should be able to delete my surveys.
+    As a User I should be able to delete my account.
 
     As an Admin I should be able to see all user_accounts
-    As an Admin I should be able to create a survey.
-    As an Admin I should be able to see all of the surveys created.
-    As an Admin I should be able to take all of the surveys created.
-    As an Admin I should be able to see the results of all the surveys created.
-    As an Admin I should be able to post the results of a survey to my Facebook Page.
+    As an Admin I should be able to delete an comment.
+    As an Admin I should be able to delete a User account.
+    As an Admin I should be able to ban an email from creating an account.
+
+
+
 
 
 a working example can be found at:

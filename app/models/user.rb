@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :surveys, dependent: :destroy
+  has_many :comments, dependent: :destroy
   belongs_to :role
 
   validates :email, presence: true
@@ -28,9 +29,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  rails_admin do
-    object_label_method :username
-  end
 
   def is_admin?
     role = Role.find_or_create_by(name: "Admin")

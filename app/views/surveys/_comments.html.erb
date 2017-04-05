@@ -1,0 +1,21 @@
+<% @survey.comments.each do |comment| %>
+
+<div class="row">
+  <div class="col-sm-1">
+    <div class="thumbnail">
+      <%= image_tag gravatar_url("#{comment.user.email}", 54), alt: "#{comment.user.username}" %>
+    </div><!-- /thumbnail -->
+  </div><!-- /col-sm-1 -->
+
+  <div class="col-sm-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong><%= comment.user.username %></strong> <span class="text-muted"><%= comment.created_at.strftime("%B, %d, %Y") %></span>
+      </div>
+      <div class="panel-body">
+        <%= comment.body %>
+      </div><!-- /panel-body -->
+    </div><!-- /panel panel-default -->
+  </div><!-- /col-sm-5 -->
+</div>
+<% end %>

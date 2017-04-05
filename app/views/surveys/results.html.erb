@@ -2,7 +2,10 @@
   <div class="col-md-8 col-md-offset-2">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= @survey.title %> <br><small>Created by: <%= @survey.user.username %></small></h3>
+        <h3 class="panel-title" style="font-size: 1.5em;"><%= @survey.title %> <br><small>Created by: <%= @survey.user.username %></small>
+          <div class="pane-title pull-right"><%= link_to 'Submit Answer', survey_path(@survey), :class => "btn btn-success btn-sm" %></div>
+          <div class="clearfix"></div>
+        </h3>
       </div>
       <div class="panel-body">
         <h4> Total Votes: <%= @total %> </h4>
@@ -18,6 +21,26 @@
       </div>
     </div>
   </div>
+</div>
+<div class="col-md-8 col-md-offset-2">
+  <h1>Comments</h1>
+  <% if @survey.comments.any? %>
+    <%= render 'comments' %>
+  <% else %>
+  <% end %>
+  <a href="#commentForm" type="button" class="btn btn-default" data-toggle="collapse">
+    Add Comment
+  </a>
+</div>
+
+  <div id="commentForm" class="col-sm-5 collapse">
+    <!-- form for comment -->
+    <div class="well well-lg">
+      <%= render 'comments_form' %>
+    </div>
+    <!-- form for comment -->
+  </div>>
+
 </div>
 <script type="text/javascript">
 (function(d, s, id) {

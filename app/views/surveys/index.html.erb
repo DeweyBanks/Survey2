@@ -14,7 +14,7 @@
       <tbody>
         <% @surveys.each do |survey| %>
         <tr>
-          <td><%= link_to survey.title, survey_path(survey) %></td>
+          <td><%= link_to survey.title, results_path(id: survey.id) %></td>
           <td>
             <% answer_array = [] %>
             <% survey.answers.each do |answer| %>
