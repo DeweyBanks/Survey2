@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
   resources :surveys do
-    resources :comments
+    resources :comments, :except => [:index, :show]
   end
 
   post '/tab_results' => 'surveys#tab_results'

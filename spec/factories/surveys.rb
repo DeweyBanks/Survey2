@@ -7,6 +7,12 @@ FactoryGirl.define do
     body { Faker::Lorem.sentence }
     survey
   end
+
+  factory :comment do
+    body { Faker::Lorem.sentence }
+    survey
+  end
+
   # survey factory without associated answers
   factory :survey do
     title { Faker::Lorem.sentence }
@@ -29,6 +35,17 @@ FactoryGirl.define do
       after(:create) do |survey, evaluator|
         create_list(:answer, evaluator.answers_count, survey: survey)
       end
+    end
+
+    factory :survey_with_comments do
+      transient do
+        comments_count 3
+      end
+
+      after(:create) do |survey, evaluator|
+        create_list(:comment, evaluator.comments_count, survey: survey)
+      end
+
     end
   end
 end
