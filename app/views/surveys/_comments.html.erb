@@ -11,6 +11,11 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <strong><%= comment.user.username %></strong> <span class="text-muted"><%= comment.created_at.strftime("%B, %d, %Y") %></span>
+
+          <i id="up-vote" class="fa fa-thumbs-up pull-right" aria-hidden="true"><span class="badge">3</span></i>
+
+          <i id="down-vote" class="fa fa-thumbs-down pull-right" aria-hidden="true"><span class="badge">1</span></i>
+
       </div>
       <div class="panel-body">
         <%= comment.body %>

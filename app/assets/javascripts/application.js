@@ -12,14 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
 //= require jquery_nested_form
 //= require Chart.bundle
 //= require chartkick
+//= require bootstrap-sprockets
 //= require_tree .
 
 
 $(function(){
+
+  $( '#down-vote' ).click(function() {
+    alert("called");
+  });
+
+  $( '#up-vote' ).click(function() {
+    alert("called");
+  });
 
   $.rails.allowAction = function(link) {
     if (!link.attr('data-confirm')) {
@@ -57,6 +65,8 @@ $(function(){
 
 
   $('#commentForm').hide();
+
+
 
 });
 
