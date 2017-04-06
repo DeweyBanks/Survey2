@@ -1,23 +1,28 @@
- <%= form_for ([@survey, @survey.comments.build]) do |f| %>
-    <% if @survey.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
-      <ul>
-        <% @survey.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
+<div class="well well-lg">
+  <%= form_for ([@survey, @survey.comments.build]) do |f| %>
+  <% if @survey.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+    <ul>
+      <% @survey.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
+ <div class="form-group form-group-lg">
+    <%= f.text_area :body, :autofocus => true, :placeholder=>"what's on your mind?" %>
+  </div>
 
-    <div class="form-group">
-      <%= f.text_area :body, :autofocus => true, :placeholder=>"what's on your mind?" %>
-    </div>
-
+<div class="btn-toolbar" role="toolbar">
+  <div class="btn-group" role="group">
     <a href="#commentForm" type="button" class="btn btn-default" data-toggle="collapse">
       Cancel
     </a>
     <%= f.submit 'Submit', :class => "btn btn-success" %>
-<% end %>
+    <% end %>
+  </div>
+</div>
+</div>
 

@@ -1,9 +1,9 @@
 <% @survey.comments.each do |comment| %>
 
-<div class="row">
-  <div class="col-sm-1">
+<div class="row-fluid">
+  <div class="col-sm-2">
     <div class="thumbnail">
-      <%= image_tag gravatar_url("#{comment.user.email}", 54), alt: "#{comment.user.username}" %>
+      <%= image_tag gravatar_url("#{comment.user.email}", 64), alt: "#{comment.user.username}" %>
     </div><!-- /thumbnail -->
   </div><!-- /col-sm-1 -->
 

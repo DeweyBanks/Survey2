@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-fluid">
   <div class="col-md-8 col-md-offset-2">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -21,25 +21,27 @@
       </div>
     </div>
   </div>
-</div>
 <div class="col-md-8 col-md-offset-2">
   <h1>Comments</h1>
   <% if @survey.comments.any? %>
     <%= render 'comments' %>
   <% else %>
   <% end %>
+</div>
+<div class="col-md-8 col-md-offset-2">
   <a href="#commentForm" type="button" class="btn btn-default" data-toggle="collapse">
     Add Comment
   </a>
 </div>
 
-  <div id="commentForm" class="col-sm-5 collapse">
-    <!-- form for comment -->
-    <div class="well well-lg">
-      <%= render 'comments_form' %>
-    </div>
-    <!-- form for comment -->
-  </div>>
+<div id="commentForm" class="col-md-8 col-md-offset-2 collapse">
+  <!-- form for comment -->
+
+    <%= render 'comments_form' %>
+
+  <!-- form for comment -->
+</div>
+
 
 </div>
 <script type="text/javascript">

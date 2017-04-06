@@ -19,6 +19,7 @@
 
 body {
   background-color: #8DA0B3;
+  margin-bottom: 40px;
 }
 
 .jumbotron {
@@ -46,12 +47,10 @@ body {
   margin: 10px auto;
 }
 
-#commentForm {
-  margin-bottom: 300px;
-  margin-left: 300px;
+#commentForm textarea {
+  width: 100%;
+  height: 100%;
 }
 
-#commentForm textarea {
-  width: 500px;
-  height: 100px;
-}
+
+
