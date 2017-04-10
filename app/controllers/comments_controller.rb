@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def upvote
+    Vote.create(user_id: current_user.id, comment_id: @comment.id, direction: "up")
     @survey = @comment.survey
     @comment.up_vote += 1
     @comment.save
@@ -24,6 +25,7 @@ class CommentsController < ApplicationController
   end
 
    def downvote
+    Vote.create(user_id: current_user.id, comment_id: @comment.id, direction: "down")
     @survey = @comment.survey
     @comment.down_vote += 1
     @comment.save
