@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to '<span class="sr-only">(current)</span> Home'.html_safe, root_path, :class => "active" %></li>
+        <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Surveys", surveys_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to "Create a survey", new_survey_path %></li>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/results' => 'surveys#results'
 
   get '/account/:id' => 'welcome#account', as: 'account'
+  get '/about' => 'welcome#about', as: 'about'
   get '/admin' => 'admin#index'
   post 'vote' => 'comments#vote'
   post 'comments/:id/upvote' => "comments#upvote", as: 'upvote'
