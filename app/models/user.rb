@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :surveys, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :votes
+
   belongs_to :role
 
   validates :email, presence: true
