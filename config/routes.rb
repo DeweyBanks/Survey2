@@ -15,4 +15,7 @@ Rails.application.routes.draw do
 
   get '/account/:id' => 'welcome#account', as: 'account'
   get '/admin' => 'admin#index'
+  post 'vote' => 'comments#vote'
+  post 'comments/:id/upvote' => "comments#upvote", as: 'upvote'
+  post 'comments/:id/downvote' => "comments#downvote", as: 'downvote'
 end

@@ -8,4 +8,9 @@ class Survey < ActiveRecord::Base
 
   validates :user, :presence => true
 
+
+  def ordered_comments
+    self.comments.order(:up_vote)
+  end
+
 end

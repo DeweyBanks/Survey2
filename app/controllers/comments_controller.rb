@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :vote, :upvote, :downvote, :update, :destroy]
 
 
   def new
@@ -10,6 +10,27 @@ class CommentsController < ApplicationController
   def edit
   end
 
+  def vote
+
+  end
+
+  def upvote
+    @survey = @comment.survey
+    @comment.up_vote += 1
+    @comment.save
+    respond_to do |format|
+      format.js { render "vote", :locals => {:id => params[:id]} }
+    end
+  end
+
+   def downvote
+    @survey = @comment.survey
+    @comment.down_vote += 1
+    @comment.save
+    respond_to do |format|
+      format.js { render "vote", :locals => {:id => params[:id]} }
+    end
+  end
 
   def create
     @survey = Survey.find(params[:survey_id])

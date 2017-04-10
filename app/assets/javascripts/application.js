@@ -21,14 +21,6 @@
 
 $(function(){
 
-  $( '#down-vote' ).click(function() {
-    alert("called");
-  });
-
-  $( '#up-vote' ).click(function() {
-    alert("called");
-  });
-
   $.rails.allowAction = function(link) {
     if (!link.attr('data-confirm')) {
       return true;
