@@ -12,17 +12,13 @@
       <div class="panel-heading">
         <strong><%= comment.user.username %></strong> <span class="text-muted"><%= comment.created_at.strftime("%B, %d, %Y") %></span>
 
-
-
           <% span_uptag = '<span class="badge">' + comment.up_vote.to_s + '</span>' %>
-
           <%= link_to span_uptag.html_safe, upvote_path(comment),
             :method => "Post", :class => "fa fa-thumbs-up pull-right",
             :remote => true %>
 
 
           <% span_tag = '<span class="badge">' + comment.down_vote.to_s + '</span>' %>
-
           <%= link_to span_tag.html_safe, downvote_path(comment),
             :method => "Post", :class => "fa fa-thumbs-down pull-right",
             :remote => true %>
