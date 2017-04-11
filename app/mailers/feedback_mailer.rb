@@ -8,7 +8,7 @@ class FeedbackMailer < ApplicationMailer
   def feedback_email(feedback)
     @feedback = feedback
     from = Email.new(email: 'admin@surveymaker.com')
-    subject = 'You have feedback from SurveyMaker'
+    subject = "You have feedback from #{@feedback.email}"
     to = Email.new(email: ENV['ADMIN_EMAIL'])
     content = Content.new(type: 'text/plain', value: @feedback.body)
     mail = Mail.new(from, subject, to, content)
