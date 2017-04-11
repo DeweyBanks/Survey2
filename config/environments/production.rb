@@ -15,11 +15,14 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   config.action_mailer.default_url_options = { host: 'https://survey-constructor.herokuapp.com' }
   config.action_mailer.smtp_settings = {
-  server:               'smtp.sendgrid.net',
-  port:                 465,
-  user_name:            'apikey',
-  password:             ENV['SENDGRID_PASSWORD']
-}
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'https://survey-constructor.herokuapp.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like
