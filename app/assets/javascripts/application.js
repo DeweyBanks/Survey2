@@ -21,6 +21,17 @@
 
 $(function(){
 
+  // showTab = function(txt){
+  //   var tabId = '#' + txt;
+  //   $(tabId).fadeIn("slow");
+  // }
+
+  // $(".side_nav").find("a").click(function (e) {
+  //   var txt = $(e.target).text();
+  //   showTab(txt);
+  //   return false;
+  // });
+
   $.rails.allowAction = function(link) {
     if (!link.attr('data-confirm')) {
       return true;

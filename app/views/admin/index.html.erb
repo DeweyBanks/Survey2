@@ -1,1 +1,36 @@
-Admin
+<div class="row">
+  <div class="col-md-4">
+    <div class="side_nav">
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="active">
+          <a href="#Settings" aria-controls="settings" data-toggle="tab">
+            Settings
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#Users" aria-controls="users" data-toggle="tab">
+            Users
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#Surveys" aria-controls="surveys" data-toggle="tab">
+            Surveys
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="Settings">
+        <%= render :partial => 'settings' %>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="Users">
+        <%= render :partial => 'users' %>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="Surveys">
+        <%= render :partial => 'surveys' %>
+      </div>
+    </div>
+  </div>
+</div>

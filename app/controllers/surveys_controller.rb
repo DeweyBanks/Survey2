@@ -2,7 +2,7 @@ class SurveysController < ApplicationController
   before_action :get_survey, only: [:edit, :show, :tab_results, :results, :destroy]
 
   def index
-    @surveys = Survey.paginate(:page => params[:page], :per_page => 10)
+    @surveys = Survey.includes(:comments, :answers).paginate(:page => params[:page], :per_page => 10)
   end
 
   def create
