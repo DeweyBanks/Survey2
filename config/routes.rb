@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-
+  resources :preferences, :only => [:update]
   resources :surveys do
     resources :comments, :except => [:index, :show]
   end
@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   post 'comments/:id/upvote' => "comments#upvote", as: 'upvote'
   post 'comments/:id/downvote' => "comments#downvote", as: 'downvote'
   post 'feedback' => 'feedbacks#create', as: 'feedbacks'
+
+  resources :users, :only => [:edit, :update]
 end

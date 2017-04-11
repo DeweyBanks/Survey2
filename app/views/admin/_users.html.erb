@@ -1,1 +1,44 @@
-Users
+<div class="row-fluid">
+  <div class="col-md-8 col-md">
+    <div class="page-header">
+    <h1>Users</h1>
+    </div>
+    <table id="surveys" class="table table-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Surveys</th>
+          <th>Comments</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.username %></td>
+          <td>
+            <%= user.email %>
+          </td>
+          <td><%= user.role.name %></td>
+          <td><%= user.surveys.count %></td>
+          <td><%= user.comments.count %></td>
+           <td class="actions">
+            <%= link_to '', edit_user_path(user), :title => 'Edit', :class => 'fa fa-pencil' %>
+            <%= link_to '', user_path(user, :user => {:blocked_at => Time.now}), :title => "Ban", :class=> 'fa fa-ban', :method => :put, :confirm => "Are you sure?", :remote => true %>
+          </td>
+
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation">
+      <% if @users.any? %>
+      <%= will_paginate @users, renderer: BootstrapPagination::Rails  %>
+      <% else %>
+      <p class="empty">No users yet.</p>
+      <% end %>
+    </nav>
+  </div>
+</div>

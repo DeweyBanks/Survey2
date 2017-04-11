@@ -37,6 +37,18 @@ class User < ActiveRecord::Base
     self.role_id == role.id
   end
 
+  def account_active?
+    blocked_at.nil?
+  end
+
+  def active_for_authentication?
+    super && account_active?
+  end
+
+  def inactive_message
+     "User account has been blocked"
+  end
+
   private
 
   def set_role

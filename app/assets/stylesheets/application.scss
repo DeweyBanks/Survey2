@@ -175,22 +175,31 @@ body {
 .tabs-right > .nav-tabs .active > a:focus {
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: #ffffff;
-  background-color: #4B4784;
-  color: #CACBCC;
 }
 
 .side_nav {
   width: 60%;
-  background-color: #4B4784;
-  color: #CACBCC;
 }
 
+
 .side_nav a:link {
+  font-size: 1.5em;
+  background-color: #4B4784;
   color: #CACBCC !important;
 }
 
+.side_nav {
+  a:hover { background-color: #9D9AC0 !important; color: #1A164F !important; }
+  .active a { background-color: #9D9AC0 !important; color: #1A164F !important;  }
+}
 
 
+td.actions {
+  width: 80px; text-align: right;
+  a { margin-left: 7px; color: #4B4784 !important; }
+  a i { font-size: 16px; }
+
+}
 
 
 
