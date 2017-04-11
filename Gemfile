@@ -30,6 +30,7 @@ gem 'dotenv-rails'
 gem 'nested_form'
 gem "chartkick"
 gem 'will_paginate-bootstrap'
+gem 'sendgrid-ruby'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
