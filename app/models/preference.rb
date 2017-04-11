@@ -4,7 +4,7 @@ class Preference < ActiveRecord::Base
   validates :email_from, presence: true
 
   def self.default
-    where(default: true).first || new(default: true)
+    where(default: true).first || create(default: true)
   end
 
 end

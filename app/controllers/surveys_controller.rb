@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_action :get_survey, only: [:edit, :show, :tab_results, :results, :destroy]
+  before_action :authenticate_user!, only: [:edit, :create, :destroy]
 
   def index
     @surveys = Survey.includes(:comments, :answers).paginate(:page => params[:page], :per_page => 10)

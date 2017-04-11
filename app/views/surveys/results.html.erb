@@ -36,9 +36,11 @@
 
 <div id="commentForm" class="col-md-8 col-md-offset-2 collapse">
   <!-- form for comment -->
-
+  <% if current_user %>
     <%= render 'comments_form' %>
-
+  <% else %>
+    <p>You must be logged in to leave a comment</p>
+  <% end %>
   <!-- form for comment -->
 </div>
 

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   before_action :set_comment, only: [:edit, :vote, :upvote, :downvote, :update, :destroy]
 
 
