@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   post 'vote' => 'comments#vote'
   post 'comments/:id/upvote' => "comments#upvote", as: 'upvote'
   post 'comments/:id/downvote' => "comments#downvote", as: 'downvote'
+  post 'feedback' => 'feedbacks#create', as: 'feedbacks'
 end

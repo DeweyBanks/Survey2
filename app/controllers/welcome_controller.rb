@@ -9,4 +9,8 @@ class WelcomeController < ApplicationController
     @surveys = @user.surveys.paginate(:page => params[:page], :per_page => 10)
   end
 
+  def about
+    @feedback = Feedback.new
+  end
+
 end

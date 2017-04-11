@@ -20,7 +20,19 @@
   <div class="col-md-8 col-md-offset-2">
     <div class="media">
       <div class="media-body">
+        <h4 class="media-heading">Feedback:</h4>
+        <div class="well well-lg">
 
+          <%= form_for @feedback do |f| %>
+            <div class="form-group feedback">
+              <%= f.text_area :body, placeholder: 'your thoughts . . .', required: true, autofocus: true %>
+            </div>
+            <div class="form-group feedback">
+              <%= f.email_field :email, placeholder: 'your email', required: true, autofocus: true %>
+            </div>
+            <%= f.submit "Send", :class => "pure-button pure-button-primary" %>
+          <% end %>
+        </div>
 
       </div>
     </div>
