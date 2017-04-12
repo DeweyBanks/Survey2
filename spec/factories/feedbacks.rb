@@ -1,6 +1,7 @@
+require 'faker'
 FactoryGirl.define do
   factory :feedback do
-    email "MyString"
-    body "MyText"
+    email { Faker::Internet.email }
+    body { Faker::Lorem.sentence }
   end
 end

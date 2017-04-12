@@ -4,6 +4,6 @@ class Comment < ActiveRecord::Base
   has_many :votes
 
   validates :user, :presence => true
-
+  validates :survey, :presence => true
 
 end
