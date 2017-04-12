@@ -1,13 +1,13 @@
 module CommentsHelper
 
-  def voteable?(comment)
+  def votable?(comment)
     votes = Vote.where(["user_id = ? and comment_id = ?", current_user.id, comment.id])
     if votes.any?
-      voteable = false
+      votable = false
     else
-      voteable = true
+      votable = true
     end
-    voteable
+    votable
   end
 
 end

@@ -43,18 +43,17 @@ RSpec.describe SurveysController, type: :controller do
 
   describe "POST #create" do
     context "with valid attributes" do
-
       it "saves the new survey in the database" do
         user = FactoryGirl.create(:user)
-        expect {
-          post :create, survey: { title: "Test Survey", user_id: user.id,
-                                answers_attributes: [{body: "Answer to Test Survey"}]
-                              }
-          }.to change(Survey, :count)
+        sign_in(user)
+        survey_params = FactoryGirl.attributes_for(:survey_with_answers, :user_id => user.id)
+
+        expect { post :create, survey: survey_params }.to change{ Survey.count }.by(1)
       end
 
       it "redirects to the new survey" do
         user = FactoryGirl.create(:user)
+        sign_in(user)
         survey = FactoryGirl.attributes_for(:survey_with_answers, :user_id => user.id)
         post :create, survey: survey
         created_survey = assigns[:survey]
@@ -65,13 +64,15 @@ RSpec.describe SurveysController, type: :controller do
     end
 
     context "with invalid attributes" do
-      it "does not save the new contact in the database" do
+      it "does not save the new survey in the database" do
         expect{
-          post :create, survey: FactoryGirl.attributes_for(:invalid_survey)
+          post :create, survey: FactoryGirl.attributes_for(:survey)
         }.to_not change(Survey,:count)
       end
       it "re-renders the :new template" do
-        post :create, survey: FactoryGirl.attributes_for(:invalid_survey)
+        user = FactoryGirl.create(:user)
+        sign_in(user)
+        post :create, survey: FactoryGirl.attributes_for(:survey)
         expect(response).to render_template :new
       end
     end
