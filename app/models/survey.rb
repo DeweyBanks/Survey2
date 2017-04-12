@@ -7,6 +7,6 @@ class Survey < ActiveRecord::Base
   accepts_nested_attributes_for :answers, :allow_destroy => true
 
   validates :user, :presence => true
-
+  validates :answers, :presence => true
 
 end

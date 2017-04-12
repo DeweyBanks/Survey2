@@ -46,16 +46,21 @@ RSpec.describe SurveysController, type: :controller do
       it "saves the new survey in the database" do
         user = FactoryGirl.create(:user)
         sign_in(user)
-        survey_params = FactoryGirl.attributes_for(:survey_with_answers, :user_id => user.id)
-
-        expect { post :create, survey: survey_params }.to change{ Survey.count }.by(1)
+        params = {}
+        params["survey"] = {:title => 'Title', :user_id => user.id}
+        params["survey"]["answers_attributes"] = [{:body => "Answer 1"}, {:body => "Answer 2"}]
+        expect {
+          post :create, params
+          }.to change{ Survey.count }.by(1)
       end
 
       it "redirects to the new survey" do
         user = FactoryGirl.create(:user)
         sign_in(user)
-        survey = FactoryGirl.attributes_for(:survey_with_answers, :user_id => user.id)
-        post :create, survey: survey
+        params = {}
+        params["survey"] = {:title => 'Title', :user_id => user.id}
+        params["survey"]["answers_attributes"] = [{:body => "Answer 1"}, {:body => "Answer 2"}]
+        post :create, params
         created_survey = assigns[:survey]
         target_url = "http://test.host/tab_results?id=#{created_survey.id}&notice=Survey+was+successfully+created."
         expect(response).to redirect_to(target_url)
