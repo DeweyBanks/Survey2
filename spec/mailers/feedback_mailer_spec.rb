@@ -7,7 +7,7 @@ RSpec.describe FeedbackMailer, type: :mailer do
 
     it "renders the headers" do
       expect(mail.subject).to eq("Feedback from SurveyMaker")
-      expect(mail.to).to eq([ENV['ADMIN_EMAIL']])
+      expect(mail.to).to eq(['deweybanks@gmail.com'])
       expect(mail.from).to eq(["admin@surveymaker.com"])
     end
 
