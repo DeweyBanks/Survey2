@@ -22,6 +22,10 @@ body {
   margin-bottom: 40px;
 }
 
+a {
+  color: #2C304D
+}
+
 .feedback textarea {
   width: 80%;
   height: 100px;
@@ -201,10 +205,36 @@ td.actions {
 
 }
 
+.feedback-wrapper{
+  margin-top: 5%;
+}
 
+.feedback {
+  height: 100%;
+  background-color: #CACBCC;
+}
 
+.feedback-form input,
+.feedback-form textarea {
+  width: 100%;
+}
 
+.feedback-form textarea {
+  padding: 5px;
+}
 
+.feedback-form input[type="submit"] {
+  color: #CACBCC;
+  background: #4B4784;
+}
+
+.feedback-heading {
+  padding: 10px 5px 5px 5px;
+}
+
+.feedback-form {
+  margin: 20px;
+}
 
 
 
