@@ -21,16 +21,21 @@
 
 $(function(){
 
-  // showTab = function(txt){
-  //   var tabId = '#' + txt;
-  //   $(tabId).fadeIn("slow");
-  // }
+    //----- OPEN
+    $('[data-comment-open]').on('click', function(e)  {
+        var targeted_comment_class = jQuery(this).attr('data-comment-open');
+        $('[data-comment="' + targeted_comment_class + '"]').fadeIn(350);
 
-  // $(".side_nav").find("a").click(function (e) {
-  //   var txt = $(e.target).text();
-  //   showTab(txt);
-  //   return false;
-  // });
+        e.preventDefault();
+    });
+
+    //----- CLOSE
+    $('[data-comment-close]').on('click', function(e)  {
+        var targeted_comment_class = jQuery(this).attr('data-comment-close');
+        $('[data-comment="' + targeted_comment_class + '"]').fadeOut(350);
+
+        e.preventDefault();
+    });
 
   $.rails.allowAction = function(link) {
     if (!link.attr('data-confirm')) {

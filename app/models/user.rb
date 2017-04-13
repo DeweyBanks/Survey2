@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :surveys, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
   belongs_to :role
 

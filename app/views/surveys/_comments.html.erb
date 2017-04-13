@@ -10,27 +10,50 @@
   <div class="col-sm-9">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <strong><%= comment.user.username %></strong> <span class="text-muted"><%= comment.created_at.strftime("%B, %d, %Y") %></span>
+        <strong><%= comment.user.username %></strong> <span class="text-muted"><%= comment.created_at.strftime("%B, %d, %Y") %> </span>&nbsp
 
           <% if current_user && votable?(comment) %>
             <% span_uptag = '<span class="badge">' + comment.up_vote.to_s + '</span>' %>
             <%= link_to span_uptag.html_safe, vote_path(comment, 'up'),
-              :method => "Post", :class => "fa fa-thumbs-up pull-right",
+              :method => "Post", :class => "fa fa-thumbs-up",
               :remote => true %>
 
             <% span_tag = '<span class="badge">' + comment.down_vote.to_s + '</span>' %>
             <%= link_to span_tag.html_safe, vote_path(comment, 'down'),
-              :method => "Post", :class => "fa fa-thumbs-down pull-right",
+              :method => "Post", :class => "fa fa-thumbs-down",
               :remote => true %>
           <% else %>
-            <i class="fa fa-thumbs-up pull-right" aria-hidden="true">
+            <i class="fa fa-thumbs-up" aria-hidden="true">
               <span class="badge"><%= comment.up_vote %></span>
             </i>
-            <i class="fa fa-thumbs-down pull-right" aria-hidden="true">
+            <i class="fa fa-thumbs-down" aria-hidden="true">
               <span class="badge"><%= comment.down_vote %></span>
             </i>
           <% end %>
 
+          <% if comment.user == current_user %>
+            <%= link_to "", "#", :"data-comment-open" => "comment-edit", :class => "fa fa-wrench pull-right" %>
+
+            <div class="comment" data-comment="comment-edit">
+                <div class="comment-inner">
+                    <%= form_for ([@survey, comment]) do |f| %>
+                      <div class="form-group form-group-lg">
+                        <%= f.text_area :body, :autofocus => true %>
+                      </div>
+                      <a href="#" data-comment-close="comment-edit" type="button" class="btn btn-default ">
+                          Cancel
+                      </a>
+                        <%= link_to "Delete", survey_comment_path(@survey, comment), :method => :delete, :class => "btn btn-danger",  data: { confirm: t('Are you sure?'), ok: t("buttons.yes"), cancel: t("buttons.cancel") } %>
+                      <%= f.submit 'Save Changes', :class => "btn btn-success" %>
+                    <% end %>
+                    <a class="comment-close" data-comment-close="comment-edit" href="#">x</a>
+                </div>
+            </div>
+
+
+
+
+          <% end %>
       </div>
       <div class="panel-body">
         <%= comment.body %>
