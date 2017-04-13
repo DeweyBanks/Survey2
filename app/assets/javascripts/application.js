@@ -43,7 +43,7 @@ $(function(){
     link.removeAttr('data-confirm');
     return link.trigger('click.rails');
   };
-  return $.rails.showConfirmDialog = function(link) {
+  $.rails.showConfirmDialog = function(link) {
     var html, message;
     message = link.attr('data-confirm');
     console.log("Message:::: ", message);
@@ -65,10 +65,6 @@ $(function(){
       return $.rails.confirmed(link);
     });
   };
-
-
-  $('#commentForm').hide();
-
 
 
 });

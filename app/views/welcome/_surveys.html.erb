@@ -20,7 +20,7 @@
       </td>
       <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i><%= link_to "edit", edit_survey_path(survey.id) %>
       </td>
-      <td class="survey-user"><i class="fa fa-trash" aria-hidden="false"></i><%=link_to "delete",survey_path(survey.id), :method => :delete, data: { confirm: t('Are your sure you want to delete this survey?'), ok: t('buttons.ok'), cancel: t('buttons.cancel') } %> </td>
+      <td class="survey-user"><i class="fa fa-trash" aria-hidden="false"></i><%=link_to "delete",survey_path(survey.id), :method => :delete, data: { confirm: t('Are your sure you want to delete this survey?'), ok: t("buttons.yes_i'm_sure"), cancel: t("buttons.no_way_dude!") } %> </td>
     </tr>
     <% end %>
   </tbody>

@@ -16,10 +16,8 @@ Rails.application.routes.draw do
   get '/account/:id' => 'welcome#account', as: 'account'
   get '/about' => 'welcome#about', as: 'about'
   get '/admin' => 'admin#index'
-  post 'vote' => 'comments#vote'
-  post 'comments/:id/upvote' => "comments#upvote", as: 'upvote'
-  post 'comments/:id/downvote' => "comments#downvote", as: 'downvote'
-  post 'feedback' => 'feedbacks#create', as: 'feedbacks'
+  post '/comments/:id/vote/:direction' => 'comments#vote', as: 'vote'
+  post '/feedback' => 'feedbacks#create', as: 'feedbacks'
 
   resources :users, :only => [:edit, :update]
 end

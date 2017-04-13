@@ -12,28 +12,21 @@ class CommentsController < ApplicationController
   end
 
   def vote
-
-  end
-
-  def upvote
-    Vote.create(user_id: current_user.id, comment_id: @comment.id, direction: "up")
+    Vote.create(user_id: current_user.id, comment_id: @comment.id, direction: params[:direction])
     @survey = @comment.survey
-    @comment.up_vote += 1
+    case params[:direction]
+    when 'up'
+      @comment.up_vote += 1
+    else
+      @comment.down_vote += 1
+    end
     @comment.save
     respond_to do |format|
       format.js { render "vote", :locals => {:id => params[:id]} }
     end
+
   end
 
-   def downvote
-    Vote.create(user_id: current_user.id, comment_id: @comment.id, direction: "down")
-    @survey = @comment.survey
-    @comment.down_vote += 1
-    @comment.save
-    respond_to do |format|
-      format.js { render "vote", :locals => {:id => params[:id]} }
-    end
-  end
 
   def create
     @survey = Survey.find(params[:survey_id])
@@ -76,16 +69,16 @@ class CommentsController < ApplicationController
 
   private
 
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
 
-    def comment_params
-      params.require(:comment).permit(
-        :body,
-        :user_id,
-        :survey
-        )
-    end
+  def comment_params
+    params.require(:comment).permit(
+      :body,
+      :user_id,
+      :survey
+      )
+  end
 end

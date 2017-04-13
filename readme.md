@@ -98,7 +98,7 @@ $ rspec
     As a User I should be able to delete my account.
 
     As an Admin I should be able to see all user_accounts
-    As an Admin I should be able to delete an comment.
+    As an Admin I should be able to delete a comment.
     As an Admin I should be able to delete a User account.
     As an Admin I should be able to ban an email from creating an account.
 

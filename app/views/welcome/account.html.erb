@@ -39,7 +39,7 @@
           <%= @user.email %>
           <div class="media-body">
             <h4 class="media-heading"></h4>
-              <%= button_to "Cancel my account", registration_path(resource_name), :type =>"button", :class => "btn btn-danger", data: { confirm: "Are you sure? This will delete all of your surveys!" }, method: :delete %>
+              <%= button_to "Cancel my account", registration_path(resource_name), :type =>"button", :class => "btn btn-danger",  data: { confirm: t('Are you sure? This will Delete all of your surveys and can not be undone!'), ok: t("buttons.yes_i'm_sure."), cancel: t("buttons.no!_i_didn't_mean_it") }, method: :delete %>
               <!-- Modal -->
               <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel">
                 <div class="modal-dialog" role="document">
