@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/DeweyBanks/Survey2.svg?branch=master)](https://travis-ci.org/DeweyBanks/Survey2)
 [![Code Climate](https://codeclimate.com/github/DeweyBanks/Survey2/badges/gpa.svg)](https://codeclimate.com/github/DeweyBanks/Survey2)
-[![Coverage Status](https://coveralls.io/repos/github/DeweyBanks/Survey2/badge.svg?branch=master)](https://coveralls.io/github/DeweyBanks/Survey2?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/DeweyBanks/Survey2/badge.svg)](https://coveralls.io/github/DeweyBanks/Survey2)
 
 # SurveyMaker
 
