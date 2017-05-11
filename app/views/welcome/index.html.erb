@@ -1,16 +1,16 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="jumbotron">
-        <h1 class="display-3">Welcome To SurveyMaker</h1>
-        <% if user_signed_in? %>
-          <p class="lead">Hello <%= current_user.username %>, from here you can:</p>
-          <p><%= link_to "Create a survey", new_survey_path, :class => "btn btn-lg btn-success" %>
-        <% else %>
-          <p>Sign in and create a survey or click below to see the surveys already created.</p>
-            <p><%= link_to '<i class="fa fa-facebook" aria-hidden="true"></i> Sign up with Facebook'.html_safe, user_facebook_omniauth_authorize_path, :class => "btn btn-default  dropdown-toggle" %>
-              <%= link_to '<i class="fa fa-envelope" aria-hidden="true"></i> Sign up with Email'.html_safe, new_user_registration_path, :class => "btn btn-default dropdown-toggle" %></p><p>
-        <% end %>
-          <%= link_to "See the surveys", surveys_path, :class => "btn btn-lg btn-success" %></p>
+    <h1 class="display-3">Welcome To SurveyMaker</h1>
+      <% if user_signed_in? %>
+        <p class="lead">Hello <%= current_user.username %>, from here you can:</p>
+        <p><%= link_to "Create a survey", new_survey_path, :class => "btn btn-lg btn-success" %>
+      <% else %>
+        <p>Sign in and create a survey or click below to see the surveys already created.</p>
+        <p><%= link_to '<i class="fa fa-facebook" aria-hidden="true"></i> Sign up with Facebook'.html_safe,user_facebook_omniauth_authorize_path, :class => "btn btn-default  dropdown-toggle" %>
+      <%= link_to '<i class="fa fa-envelope" aria-hidden="true"></i> Sign up with Email'.html_safe,new_user_registration_path, :class => "btn btn-default dropdown-toggle" %></p><p>
+      <% end %>
+      <%= link_to "See the surveys", surveys_path, :class => "btn btn-lg btn-success" %></p>
     </div>
   </div>
 </div>
