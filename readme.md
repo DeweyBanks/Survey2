@@ -2,7 +2,7 @@
 [![Code Climate](https://codeclimate.com/github/DeweyBanks/Survey2/badges/gpa.svg)](https://codeclimate.com/github/DeweyBanks/Survey2)
 [![Coverage Status](https://coveralls.io/repos/github/DeweyBanks/Survey2/badge.svg)](https://coveralls.io/github/DeweyBanks/Survey2)
 
-# SurveyMaker
+# ![SurveyMakerLogo](assets/images/SurveyMakerLogo.png "SurveyMaker")
 
 ### SurveyMaker is an app for creating and taking surveys.
 
