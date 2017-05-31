@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-
     @user.comments.destroy_all
     @user.surveys.destroy_all
     @user.save
@@ -14,7 +13,6 @@ class UsersController < ApplicationController
       format.js { render :layout => "application" }
     end
   end
-
 
   private
 
@@ -27,5 +25,4 @@ class UsersController < ApplicationController
       :blocked_at
       )
   end
-
 end

@@ -13,16 +13,13 @@ class PreferencesController < ApplicationController
     end
   end
 
-
   private
-
 
   def preference_params
     params.require(:preference).permit(
       :company,
       :email_from,
       :default
-      )
+    )
   end
-
 end

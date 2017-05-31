@@ -2,37 +2,28 @@ class CommentsController < ApplicationController
 
   before_action :set_comment, only: [:edit, :vote, :upvote, :downvote, :update, :destroy]
 
-
   def new
     @comment = Comment.new
   end
 
-
   def edit
+    binding.pry
   end
 
   def vote
     Vote.create(user_id: current_user.id, comment_id: @comment.id, direction: params[:direction])
     @survey = @comment.survey
-    case params[:direction]
-    when 'up'
-      @comment.up_vote += 1
-    else
-      @comment.down_vote += 1
-    end
+    params[:direction] == "up" ? @comment.up_vote += 1 : @comment.down_vote += 1
     @comment.save
     respond_to do |format|
       format.js { render "vote", :locals => {:id => params[:id]} }
     end
-
   end
-
 
   def create
     @survey = Survey.find(params[:survey_id])
     @comment = @survey.comments.create(comment_params)
     @comment.user_id = current_user.id
-
     respond_to do |format|
       if @comment.save
         format.html { redirect_to results_path(id: @survey.id), notice: 'Comment was successfully created.' }
@@ -43,7 +34,6 @@ class CommentsController < ApplicationController
       end
     end
   end
-
 
   def update
     respond_to do |format|
@@ -56,7 +46,6 @@ class CommentsController < ApplicationController
       end
     end
   end
-
 
   def destroy
     survey_id = @comment.survey_id
@@ -73,12 +62,11 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-
   def comment_params
     params.require(:comment).permit(
       :body,
       :user_id,
       :survey
-      )
+    )
   end
 end

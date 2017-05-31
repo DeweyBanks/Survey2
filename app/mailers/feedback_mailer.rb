@@ -8,7 +8,7 @@ class FeedbackMailer < ApplicationMailer
   def feedback_email(feedback)
     @feedback = feedback
     @url = 'https://survey-constructor.herokuapp.com/admin'
-     mail( :to => ENV['ADMIN_EMAIL'],
+    mail( :to => ENV['ADMIN_EMAIL'],
     :subject => 'Feedback from SurveyMaker' )
   end
 end

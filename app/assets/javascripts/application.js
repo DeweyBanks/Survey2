@@ -21,15 +21,12 @@
 
 $(function(){
 
-    //----- OPEN
     $('[data-comment-open]').on('click', function(e)  {
         var targeted_comment_class = jQuery(this).attr('data-comment-open');
         $('[data-comment="' + targeted_comment_class + '"]').fadeIn(350);
-
         e.preventDefault();
     });
 
-    //----- CLOSE
     $('[data-comment-close]').on('click', function(e)  {
         var targeted_comment_class = jQuery(this).attr('data-comment-close');
         $('[data-comment="' + targeted_comment_class + '"]').fadeOut(350);
@@ -70,7 +67,4 @@ $(function(){
       return $.rails.confirmed(link);
     });
   };
-
-
 });
-

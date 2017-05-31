@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :get_survey, only: [:edit, :show, :tab_results, :results, :destroy]
+  before_action :get_survey, only: [:update, :edit, :show, :tab_results, :results, :destroy]
   before_action :authenticate_user!, only: [:edit, :create, :destroy]
 
   def index
@@ -8,16 +8,11 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params)
-
-    # In the event an empty answer is passed in, I don't want to throw a validation error.
-    # instead I will check for and remove any empty answers.
     @survey.answers.each do |x|
       if x.body.blank?
         x.destroy!
       end
     end
-
-    # for formatting purposes I will add a ? to any title without one.
     unless @survey.title.end_with?("?")
       @survey.title += "?"
     end
@@ -36,22 +31,21 @@ class SurveysController < ApplicationController
     @survey = Survey.new
   end
 
-  def edit
-  end
-
-  def show
+  def update
+    # TODO
+    # if an answer has been changed, remove it's votes
+    @survey.update(survey_params)
+    render :results
   end
 
   def destroy
     @survey.destroy
-      flash[:notice] = "Your survey has been removed"
-      redirect_to account_path(current_user)
+    flash[:notice] = "Your survey has been removed"
+    redirect_to account_path(current_user)
   end
 
   def results
-    total_votes = []
-    @survey.answers.each { |answer| total_votes << answer.votes }
-    @total = total_votes.sum
+    @total = @survey.answers.map {|answer| answer.votes}.sum
   end
 
   def tab_results
@@ -81,5 +75,4 @@ class SurveysController < ApplicationController
       comments_attributes: [:id, :body, :user_id, :_destroy]
       )
   end
-
 end

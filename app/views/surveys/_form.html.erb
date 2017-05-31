@@ -3,7 +3,6 @@
     <div class="page-header">
       <h1>Create your survey</h1>
     </div>
-
     <%= nested_form_for @survey do |f| %>
     <% if @survey.errors.any? %>
     <div id="error_explanation">
@@ -30,7 +29,7 @@
     </div>
     <label>When you are finished create your survey.</label>
     <br>
-    <%= f.submit 'Create Survey', :class => "btn btn-success" %>
+    <%= f.submit 'Save', :class => "btn btn-success" %>
     <% end %>
   </div>
 </div>

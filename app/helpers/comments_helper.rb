@@ -9,5 +9,4 @@ module CommentsHelper
     end
     votable
   end
-
 end

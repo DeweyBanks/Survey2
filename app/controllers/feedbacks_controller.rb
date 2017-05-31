@@ -1,14 +1,10 @@
 class FeedbacksController < ApplicationController
 
-
   def create
     @feedback = Feedback.new(feedback_params)
-
     respond_to do |format|
       if @feedback.save
-        # Tell the UserMailer to send a welcome email after save
         FeedbackMailer.feedback_email(@feedback).deliver_now
-
         format.html { redirect_to(about_path, notice: 'Your feedback is appreciated!.') }
       else
         format.html { redirect_to(about_path, notice: 'Something went wrong.') }
@@ -17,15 +13,12 @@ class FeedbacksController < ApplicationController
     end
   end
 
+  private
 
-   private
-
-    def feedback_params
-      params.require(:feedback).permit(
-        :body,
-        :email
-        )
-    end
-
+  def feedback_params
+    params.require(:feedback).permit(
+      :body,
+      :email
+    )
+  end
 end
-

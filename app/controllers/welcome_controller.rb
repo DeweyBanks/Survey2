@@ -2,7 +2,6 @@ class WelcomeController < ApplicationController
   before_action :authenticate_user!, only: [:account]
 
   def index
-
   end
 
   def account
@@ -13,5 +12,4 @@ class WelcomeController < ApplicationController
   def about
     @feedback = Feedback.new
   end
-
 end

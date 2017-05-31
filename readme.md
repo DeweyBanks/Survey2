@@ -2,12 +2,9 @@
 [![Code Climate](https://codeclimate.com/github/DeweyBanks/Survey2/badges/gpa.svg)](https://codeclimate.com/github/DeweyBanks/Survey2)
 [![Coverage Status](https://coveralls.io/repos/github/DeweyBanks/Survey2/badge.svg)](https://coveralls.io/github/DeweyBanks/Survey2)
 
-
 [<img src="http://www.deweybanks.com//assets/SurveyMakerLogo-ae170a18cb0ad54521588923b0856a2fa4a241b5198976391d5169def8fc6192.png">](https://survey-constructor.herokuapp.com/)
 
 ### SurveyMaker is an app for creating and taking surveys.
-
-
 
 ## Getting started
 
@@ -52,28 +49,6 @@ To run the test suite
 $ rspec
 ```
 
-#### Ruby version
-    ruby '2.2.0'
-
-#### System dependencies
-    gem 'devise'
-    gem 'omniauth-facebook'
-    gem 'dotenv-rails'
-    gem 'nested_form'
-    gem 'will_paginate-bootstrap'
-    gem 'pg'
-
-    For Testing and Development:
-        gem 'pry'
-        gem 'faker'
-        gem 'rspec-rails', '~> 3.5'
-        gem 'factory_girl_rails'
-        gem 'capybara'
-        gem 'database_cleaner'
-        gem 'shoulda-matchers', '~> 3.1'
-    In Production:
-        gem 'rails_12factor'
-
 #### User Stories
     Vistor = A user with no user_account
     User = A user who has signed up with a user_account. Has all abilites of Vistor.
@@ -104,10 +79,5 @@ $ rspec
     As an Admin I should be able to ban an email from creating an account.
 
 
-
-
-
 a working example can be found at:
 [SurveyMaker on Heroku](https://survey-constructor.herokuapp.com/ "Survey Maker")
-
-

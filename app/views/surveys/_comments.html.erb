@@ -1,17 +1,14 @@
 <% @survey.comments.order("up_vote desc").each do |comment| %>
-
 <div class="row-fluid">
   <div class="col-sm-2">
     <div class="thumbnail">
       <%= image_tag gravatar_url("#{comment.user.email}", 64), alt: "#{comment.user.username}" %>
-    </div><!-- /thumbnail -->
-  </div><!-- /col-sm-1 -->
-
+    </div>
+  </div>
   <div class="col-sm-9">
     <div class="panel panel-default">
       <div class="panel-heading">
         <strong><%= comment.user.username %></strong> <span class="text-muted"><%= comment.created_at.strftime("%B, %d, %Y") %> </span>&nbsp
-
         <% if current_user && votable?(comment) %>
         <% span_uptag = '<span class="badge">' + comment.up_vote.to_s + '</span>' %>
         <%= link_to span_uptag.html_safe, vote_path(comment, 'up'),
@@ -49,9 +46,7 @@
             <a class="comment-close" data-comment-close="comment-edit" href="#">x</a>
           </div>
         </div>
-
         <% end %>
-
       </div>
       <div class="panel-body">
         <%= comment.body %>

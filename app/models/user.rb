@@ -2,18 +2,12 @@ class User < ActiveRecord::Base
   has_many :surveys, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
-
   belongs_to :role
-
   validates :email, presence: true
   validates :email, uniqueness: true
   validates :username, :presence => true
-
-
   after_create :set_role
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
@@ -23,14 +17,9 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.username = auth.info.name   # assuming the user model has a name
-      # user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
+      user.username = auth.info.name
     end
   end
-
 
   def is_admin?
     role = Role.find_or_create_by(name: "Admin")
@@ -61,5 +50,4 @@ class User < ActiveRecord::Base
     end
     self.save
   end
-
 end

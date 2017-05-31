@@ -13,5 +13,4 @@ class AdminController < ApplicationController
      redirect_to root_path, :flash => { :notice => "Insufficient rights!" } unless
      current_user && current_user.role.name == "Admin"
   end
-
 end
