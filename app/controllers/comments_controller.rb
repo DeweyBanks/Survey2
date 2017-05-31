@@ -6,10 +6,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  def edit
-    binding.pry
-  end
-
   def vote
     Vote.create(user_id: current_user.id, comment_id: @comment.id, direction: params[:direction])
     @survey = @comment.survey
