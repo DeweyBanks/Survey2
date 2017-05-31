@@ -22,13 +22,13 @@
 $(function(){
 
     $('[data-comment-open]').on('click', function(e)  {
-        var targeted_comment_class = jQuery(this).attr('data-comment-open');
+        var targeted_comment_class = $(this).attr('data-comment-open');
         $('[data-comment="' + targeted_comment_class + '"]').fadeIn(350);
         e.preventDefault();
     });
 
     $('[data-comment-close]').on('click', function(e)  {
-        var targeted_comment_class = jQuery(this).attr('data-comment-close');
+        var targeted_comment_class = $(this).attr('data-comment-close');
         $('[data-comment="' + targeted_comment_class + '"]').fadeOut(350);
 
         e.preventDefault();
