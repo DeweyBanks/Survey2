@@ -51,28 +51,31 @@ function computeTotalDistance() {
   return totalDistance;
 }
 
-var pDistance = document.getElementById("distance");
-var trackButton = document.querySelector("button");
 
-trackButton.onclick = function(e) {
-  e.preventDefault();
+window.onload = function() {
+  var pDistance = document.getElementById("distance");
+  var trackButton = document.querySelector("button");
 
-  if (trackButton.innerHTML === "Start") {
-    trackButton.innerHTML = "Stop";
-    trackMe();
-  } else {
-    trackButton.innerHTML = "Start";
-    clearTracking();
-    var d = computeTotalDistance();
-    var miles = d/1.6;
-    if (d > 0) {
-      d = Math.round(d * 1000) / 1000;
-      pDistance.innerHTML = "Total distance traveled: " + miles + "miles";
+  trackButton.onclick = function(e) {
+    e.preventDefault();
+
+    if (trackButton.innerHTML === "Start") {
+      trackButton.innerHTML = "Stop";
+      trackMe();
     } else {
-      pDistance.innerHTML = "You didn't travel anywhere at all.";
+      trackButton.innerHTML = "Start";
+      clearTracking();
+      var d = computeTotalDistance();
+      var miles = d/1.6;
+      if (d > 0) {
+        d = Math.round(d * 1000) / 1000;
+        pDistance.innerHTML = "Total distance traveled: " + miles + "miles";
+      } else {
+        pDistance.innerHTML = "You didn't travel anywhere at all.";
+      }
     }
-  }
-};
+  };
+}
 
 
 
