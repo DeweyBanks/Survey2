@@ -3,6 +3,7 @@
 <head>
   <title>SurveyMaker</title>
   <link rel="icon"  href="assets/images/SurveyMakerLogo.png" />
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=geometry"></script>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -19,7 +20,7 @@
       </div>
       <%= render :partial => 'shared/footer' %>
       <script src="https://use.fontawesome.com/e6bb75f937.js"></script>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>">
+
 </script>
     </div>
   </body>
