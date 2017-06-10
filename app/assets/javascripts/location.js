@@ -22,11 +22,11 @@ function displayError(error) {
   console.warn("Error in getting your location: " + message, error.message);
 }
 
-if(navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(displayLocation, displayError, options)
-} else {
-  alert("Sorry, this browser does not support geolocation");
-}
+// if(navigator.geolocation) {
+//   navigator.geolocation.getCurrentPosition(displayLocation, displayError, options)
+// } else {
+//   alert("Sorry, this browser does not support geolocation");
+// }
 
 
 function trackMe() {
