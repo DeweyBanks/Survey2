@@ -26,7 +26,7 @@
         <% if user_signed_in? && current_user.role.name == "Admin" %>
           <li><%= link_to "Admin", "/admin" %></li>
         <% end %>
-
+        <li><p id="location"></p></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
