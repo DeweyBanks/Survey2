@@ -1,0 +1,61 @@
+"use strict";
+
+function saveLocation(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  displayLocation(latitude, longitude);
+  var identifier = document.getElementById('identifier');
+  var data = {
+    user: {
+      lat: latitude,
+      lng: longitude
+    }
+  };
+
+  function success(){
+    console.log("user updated");
+  }
+
+  if (identifier) {
+    var userId = identifier.dataset.user;
+    var url = '/users/' + userId;
+    $.ajax({
+      type: "PUT",
+      url: url,
+      data: data,
+      success: success
+    });
+  }
+}
+
+function displayLocation(latitude, longitude) {
+  var request = new XMLHttpRequest();
+  var method = 'GET';
+  var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true';
+  var async = true;
+
+  request.open(method, url, async);
+  request.onreadystatechange = function(){
+    if(request.readyState == 4 && request.status == 200){
+      var data = JSON.parse(request.responseText);
+      var address = data.results[0];
+      var addressElement = document.getElementById("cityState");
+      console.log(address);
+    }
+  };
+  request.send();
+}
+
+function displayError(error) {
+  var errors = ["Unknown error", "Permission denied by user", "Position not available", "Timeout error"];
+  var message = errors[error.code];
+  console.warn("Error in getting your location: " + message, error.message);
+}
+
+window.onload = function() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(saveLocation, displayError);
+  } else {
+    alert("Sorry, this browser doesn't support geolocation!");
+  }
+}

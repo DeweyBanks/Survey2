@@ -5,6 +5,9 @@
     <div class="jumbotron">
     <h1 class="display-3">Welcome To SurveyMaker</h1>
       <% if user_signed_in? %>
+        <% if !current_user.lat? && !current_user.lng? %>
+          <p id="identifier" data-user="<%= current_user.id %>"></p>
+        <% end %>
         <p class="lead">Hello <%= current_user.username %>, from here you can:</p>
         <p><%= link_to "Create a survey", new_survey_path, :class => "btn btn-lg btn-success" %>
       <% else %>
@@ -15,12 +18,4 @@
       <%= link_to "See the surveys", surveys_path, :class => "btn btn-lg btn-success" %></p>
     </div>
   </div>
-</div>
-<div>
-  <h1>How for did I go?</h1>
-  <form>
-    <button id="track">Start</button>
-  </form>
-  <p id="location"></p>
-  <p id="distance"></p>
 </div>

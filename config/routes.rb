@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/tab_results' => 'surveys#results'
   get '/results' => 'surveys#results'
 
+
   get '/account/:id' => 'welcome#account', as: 'account'
   get '/about' => 'welcome#about', as: 'about'
   get '/admin' => 'admin#index'

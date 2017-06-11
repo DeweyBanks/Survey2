@@ -3,6 +3,8 @@ class SurveysController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :create, :destroy]
 
   def index
+    # if user is logged in get survey's from area
+    #  'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + '%2C' + position.coords.longitude + '&language=en';
     @surveys = Survey.includes(:comments, :answers).paginate(:page => params[:page], :per_page => 10)
   end
 

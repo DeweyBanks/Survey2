@@ -9,6 +9,7 @@
           <th>User</th>
           <th>Email</th>
           <th>Role</th>
+          <th>Location</th>
           <th>Surveys</th>
           <th>Comments</th>
           <th></th>
@@ -22,6 +23,7 @@
             <%= user.email %>
           </td>
           <td><%= user.role.name %></td>
+          <td><%= user.lat %> / <%= user.lng %></td>
           <td><%= user.surveys.count %></td>
           <td><%= user.comments.count %></td>
            <td class="actions">
