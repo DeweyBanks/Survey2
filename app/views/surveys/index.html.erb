@@ -17,7 +17,7 @@
         <tr>
           <td><%= link_to survey.title, results_path(id: survey.id) %></td>
           <td>
-            <%= pie_chart survey_answers_charts_path(id: survey.id), width: '20%', height: '15%'  %>
+            <%= pie_chart survey_answers_charts_path(id: survey.id), legend: false, width: '50px', height: '50px'  %>
           </td>
           <td class="survey-user"><%= survey.user.username %></td>
           <% if current_user && current_user.role.name == "Admin" %>
