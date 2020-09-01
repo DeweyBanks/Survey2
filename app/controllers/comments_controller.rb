@@ -52,6 +52,7 @@ class CommentsController < ApplicationController
     end
   end
 
+
   private
 
   def set_comment

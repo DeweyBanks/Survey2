@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/admin' => 'admin#index'
   post '/comments/:id/vote/:direction' => 'comments#vote', as: 'vote'
   post '/feedback' => 'feedbacks#create', as: 'feedbacks'
+  get '/survery/answers/chart' => 'surveys#answers_chart', as: 'survey_answers_charts'
 
   resources :users, :only => [:edit, :update]
 end

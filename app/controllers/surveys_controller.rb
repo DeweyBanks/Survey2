@@ -58,6 +58,17 @@ class SurveysController < ApplicationController
     redirect_to :action => 'results', :id => @survey.id
   end
 
+  def answers_chart
+    @survey = Survey.find(params[:id])
+    answer_array = []
+    @survey.answers.each do |answer|
+      answer_array.push(["#{answer.body}",answer.votes])
+    end
+    respond_to do |format|
+      format.json { render json: answer_array }
+    end
+  end
+
   private
 
   def get_survey

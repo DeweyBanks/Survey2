@@ -17,11 +17,7 @@
         <tr>
           <td><%= link_to survey.title, results_path(id: survey.id) %></td>
           <td>
-            <% answer_array = [] %>
-            <% survey.answers.each do |answer| %>
-            <% answer_array.push(["#{answer.body}",answer.votes]) %>
-            <% end %>
-            <%= pie_chart(answer_array, legend: {position: 'none'}, width: "50px", height: "50px") %>
+            <%= pie_chart survey_answers_charts_path(id: survey.id), width: '20%', height: '15%'  %>
           </td>
           <td class="survey-user"><%= survey.user.username %></td>
           <% if current_user && current_user.role.name == "Admin" %>
