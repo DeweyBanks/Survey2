@@ -8,7 +8,7 @@ RSpec.describe PreferencesController, type: :controller do
     end
     before(:each) do
       @preference = FactoryGirl.create(:preference)
-      put :update, :id => @preference.id, :preference => attr
+      put :update, params: { :id => @preference.id, :preference => attr }
       @preference.reload
     end
 
