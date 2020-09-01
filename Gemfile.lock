@@ -292,7 +292,7 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 RUBY VERSION
-   ruby 2.2.0p0
+   ruby 2.6.3p62
 
 BUNDLED WITH
-   1.14.6
+   1.17.2

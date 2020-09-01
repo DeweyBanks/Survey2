@@ -1,3 +1,4 @@
+# Handles Settings for the App
 class PreferencesController < ApplicationController
 
   def update

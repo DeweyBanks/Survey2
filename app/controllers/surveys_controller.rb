@@ -1,3 +1,4 @@
+# Handles the Surveys
 class SurveysController < ApplicationController
   before_action :get_survey, only: [:update, :edit, :show, :tab_results, :results, :destroy]
   before_action :authenticate_user!, only: [:edit, :create, :destroy]
@@ -15,8 +16,8 @@ class SurveysController < ApplicationController
         x.destroy!
       end
     end
-    unless @survey.title.end_with?("?")
-      @survey.title += "?"
+    unless @survey.title.end_with?('?')
+      @survey.title += '?'
     end
     respond_to do |format|
       if @survey.save
@@ -42,7 +43,7 @@ class SurveysController < ApplicationController
 
   def destroy
     @survey.destroy
-    flash[:notice] = "Your survey has been removed"
+    flash[:notice] = 'Your survey has been removed'
     redirect_to account_path(current_user)
   end
 

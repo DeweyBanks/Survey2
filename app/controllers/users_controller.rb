@@ -1,3 +1,4 @@
+# Handles editing and updating users
 class UsersController < ApplicationController
 
   def edit

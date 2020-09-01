@@ -1,6 +1,6 @@
+# Handles Comments for the Surveys
 class CommentsController < ApplicationController
-
-  before_action :set_comment, only: [:edit, :vote, :upvote, :downvote, :update, :destroy]
+  before_action :set_comment, only: %i[edit vote upvote downvote update destroy]
 
   def new
     @comment = Comment.new
@@ -9,10 +9,10 @@ class CommentsController < ApplicationController
   def vote
     Vote.create(user_id: current_user.id, comment_id: @comment.id, direction: params[:direction])
     @survey = @comment.survey
-    params[:direction] == "up" ? @comment.up_vote += 1 : @comment.down_vote += 1
+    params[:direction] == 'up' ? @comment.up_vote += 1 : @comment.down_vote += 1
     @comment.save
     respond_to do |format|
-      format.js { render "vote", :locals => {:id => params[:id]} }
+      format.js { render 'vote', :locals => {id: params[:id]} }
     end
   end
 

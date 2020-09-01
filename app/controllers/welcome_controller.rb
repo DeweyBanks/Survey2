@@ -1,3 +1,4 @@
+# Handles the landing page
 class WelcomeController < ApplicationController
   before_action :authenticate_user!, only: [:account]
 

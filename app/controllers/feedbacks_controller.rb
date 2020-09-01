@@ -1,3 +1,4 @@
+# Handles Feedback form
 class FeedbacksController < ApplicationController
 
   def create
